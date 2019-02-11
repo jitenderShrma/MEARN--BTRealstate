@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BT Realstate</title>
+</head>
+<body>
+  <h4>Form for send json data</h4>
+  <form id="form-text" action="/props/listing" method="POST">
+    <input type="text" name="title" id="title" placeholder="title"/>
+    <br><br>
+    <input type="text" name="realter" id="realter" placeholder="realter"/>
+    <br><br>
+    <input type="text" name="street" id="street" placeholder="street"/>
+    <br><br>
+    <input type="text" name="city" id="city" placeholder="city"/>
+    <br><br>
+    <input type="text" name="zipcode" id="zipcode" placeholder="zipcode"/>
+    <br><br>
+    <input type="number" name="price" id="price" placeholder="price"/>
+    <br><br>
+    <input type="number" name="badrooms" id="badrooms" placeholder="badrooms"/>
+    <br><br>
+    <input type="number" name="garage" id="garage" placeholder="garage"/>
+    <br><br>
+    <input type="number" name="sqft" id="sqft" placeholder="sqft"/>
+    <br><br>
+    <input type="number" name="lot_size" id="lot_size" placeholder="lot_size"/>
+    <br><br>
+    <input type="text" name="isPublish" id="isPublish" placeholder="isPublish"/>
+    <br><br>
+    <input type="submit" value="Submit"/>
+  </form>
+
+  <h3>Image Data</h3>
+  <form id="form-image" action="/props/upload/image" enctype="multipart/form-data" method="POST">
+    <input type="file" name="image0" placeholder="Image0"/>
+    <br><br>
+    <input type="file" name="image1" placeholder="Image1"/>
+    <br><br>
+    <input type="file" name="image2" placeholder="Image2"/>
+    <br><br>
+    <input type="file" name="image3" placeholder="Image3"/>
+    <br><br>
+    <input type="file" name="image4" placeholder="Image4"/>
+    <br><br>
+    <input type="submit" value="Submit"/>
+  </form>
+
+  <script>
+    document.querySelector('#title').addEventListener('keyup', (e) => {
+      const title = e.target.value;
+      fetch(`http://localhost:8000/props/title/${title}`)
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(error => console.log(error.response));
+      
+    })
+  </script>
+</body>
+</html>
